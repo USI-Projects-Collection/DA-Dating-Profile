@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{here}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+
+\newcommand{\code}[1]{{\tt #1}}
+
+% decreas margin size
+\usepackage[margin=0.7in]{geometry}
+
+\newcommand\blankpage{%
+	\null
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\newpage}
+
+\title{
+	\normalfont\normalsize
+	\textsc{Data Analytics (2024-25)\\
+	Universit\`a della Svizzera italiana}\\
+	% \vspace{2pt}
+	\rule{\linewidth}{0.5pt}\\
+	% \vspace{5pt}
+	{\huge Dating Profile\\
+	\small Course Assignment N.16}\\
+	% \vspace{5pt}
+	\rule{\linewidth}{1pt}\\
+	\vspace{5pt}
+}
+
+\author{
+	Paolo Deidda (\text{paolo.deidda@usi.ch}) \\ 
+	Pareek Yash (\text{yash.pareek@usi.ch})\\
+	\url{https://github.com/USI-Projects-Collection/DA-Dating-Profile.git}
+	}
+
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\vspace{50pt}
+% \rule{\linewidth}{0.5pt}
+
+\vspace*{\fill}
+
+\subsection*{Setup}
+
+To run the code and reproduce the figures or outputs, you can either run the Jupyter Notebook directly on Google Colab, or follow the setup and execution instructions provided in the \texttt{README.md} file included in the repository.
+
+\section*{Introduction}
+
+
+\newpage
+
+\section{Section}
+\input{part1.tex}
+
+\newpage
+
+\section{Section}
+\input{part2.tex}
+
+\end{document}
