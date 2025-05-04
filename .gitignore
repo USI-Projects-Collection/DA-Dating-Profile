@@ -309,4 +309,6 @@ TSWLatexianTemp*
 
 
 # dataset
+/data
 *.dat
+*.pkl
