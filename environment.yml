@@ -1,12 +1,11 @@
-name: da-env
+name: da-rec
 channels:
   - conda-forge
 dependencies:
   - python=3.10
-  - matplotlib
-  - networkx
+  - ipykernel
   - numpy
   - pandas
+  - matplotlib
   - seaborn
-  - ipykernel
-  - pytorch
+  - scikit-learn
