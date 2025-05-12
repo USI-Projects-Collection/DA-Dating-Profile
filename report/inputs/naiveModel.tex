@@ -1,0 +1,30 @@
+% ---------- inputs/naiveModel.tex ----------
+\subsection*{Model definition}
+
+Two simple, parameter-free baselines are computed:
+
+\begin{enumerate}
+  \item \textbf{Global mean}  
+        \(\hat r_{ui} = \mu\), the average of \emph{all} ratings.
+  \item \textbf{Item mean}  
+        \(\hat r_{ui} = \bar r_{i}\); if an item is unseen, fall back to
+        the global mean.
+\end{enumerate}
+
+\subsection*{Results}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+    \textbf{Baseline} & \textbf{Evaluation split} & \textbf{MAE} \\ \midrule
+    Global mean & training & 2.6700 \\
+    Item mean   & test     & 1.4620 \\ \bottomrule
+  \end{tabular}
+  \caption{Performance of naïve predictors.}
+  \label{tab:naive}
+\end{table}
+
+The item-mean strategy reduces the error by roughly 45\,\% relative to the
+global average, establishing a strong but effort-free reference.
+% ---------- end inputs/naiveModel.tex ----------

@@ -1,0 +1,52 @@
+\subsection*{Model formulation}
+
+We implement a bias-aware \emph{item–item $k$-nearest-neighbour} (kNN)
+recommender:
+
+\[
+  \mu = \frac{1}{|R|} \sum_{(u,i)\in R} r_{ui}, \qquad
+  b_u = \bar r_u - \mu, \qquad
+  b_i = \bar r_i - \mu .
+\]
+
+After subtracting the global mean and user/item biases, the residual matrix
+is stored in sparse CSR format (shape
+\(\lvert\text{items}\rvert \times \lvert\text{users}\rvert\)) and fed to
+\texttt{NearestNeighbors} with cosine distance.
+
+For a target pair \((u,i)\) the prediction rule is
+
+\[
+  \hat r_{ui}= \mu + b_u + b_i +
+  \frac{\displaystyle \sum\limits_{j\in\mathcal N_i(u)}
+        \dfrac{\,r_{uj}-\mu-b_u-b_j}{d_{ij}}}
+       {\displaystyle \sum\limits_{j\in\mathcal N_i(u)} \dfrac{1}{d_{ij}} },
+\]
+where \(\mathcal N_i(u)\) are the $k$ neighbours of item~$i$ that user~$u$
+has rated and \(d_{ij}\) denotes their cosine distance.
+
+\subsection*{Hyper-parameter selection}
+
+A coarse grid search over \(k\in\{10,25,50\}\) confirmed
+\(k = 25\) as the best compromise between accuracy and coverage; larger
+values offered negligible gains.
+
+\subsection*{Evaluation}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+    \textbf{Model} & \textbf{$k$} & \textbf{MAE (test)} \\ \midrule
+    Bias-aware item–item kNN & 25 & 1.4633 \\ \midrule
+    Item mean baseline (Table~\ref{tab:naive}) & -- & 1.4620 \\ \bottomrule
+  \end{tabular}
+  \caption{Collaborative filter vs.\ strongest naïve baseline.}
+  \label{tab:cf}
+\end{table}
+
+The kNN model comfortably outperforms the global average but only matches
+the item-mean predictor.  This indicates that, given the short user histories
+and pronounced item popularity patterns, \emph{item identity alone explains
+most variance}.  Further improvement is likely to require latent-factor
+methods or hybridising with content features (e.g.\ gender, text, images).

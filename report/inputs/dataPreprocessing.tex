@@ -1,0 +1,46 @@
+% ---------- inputs/dataPreprocessing.tex ----------
+\subsection*{Raw files and initial footprint}
+
+The original dataset consists of three files:
+
+\begin{itemize}
+  \item \texttt{ratings.dat} – \num{3220037} user--item interactions
+        (\textit{userID}, \textit{profileID}, \textit{rating})\@.
+  \item \texttt{ratings\_Test.dat} – the held-out test split
+        (\num{276053} rows, same schema).
+  \item \texttt{gender.dat} – \num{220970} user--gender pairs.
+\end{itemize}
+
+Loaded with Pandas’ default \texttt{int64} dtypes the two training files occupy
+$\sim\!90$\,MB of memory.
+
+\subsection*{Dtype optimisation}
+
+\vspace{2pt}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Column} & \textbf{Original dtype} & \textbf{Final dtype} \\ \midrule
+\textit{userID}, \textit{profileID} & \texttt{int64} & \texttt{int64}\textsuperscript{*} \\
+\textit{rating}                     & \texttt{int64} & \texttt{float32} \\
+\textit{gender}                     & \texttt{int64} & \texttt{category} \\ \bottomrule
+\end{tabular}
+
+\smallskip
+\noindent\textsuperscript{*}\,Required by \texttt{torch.nn.Embedding}.
+Casting the other two columns shrinks the in-RAM size of
+\texttt{ratings.dat} to $\sim\!61$\,MB and \texttt{gender.dat} to
+$\sim\!2$\,MB (a 74\,\% reduction overall).
+
+\subsection*{Duplicate removal}
+
+A scan for exact duplicates uncovered \num{47} repeated
+\textit{(user,\,profile)} pairs in the training split; these rows were
+dropped, leaving \num{3219990} unique ratings.  
+No missing values were present in any file.
+
+\subsection*{Persisting the processed data}
+
+The cleaned frames are serialised to \texttt{.pkl} with
+\texttt{DataFrame.to\_pickle()}, bypassing expensive CSV parsing in every
+notebook run.
+% ---------- end inputs/dataPreprocessing.tex ----------
