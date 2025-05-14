@@ -1,6 +1,6 @@
 % This file contains the data exploration section of the report.
 \subsubsection*{DataFrame Overview}
-\begin{table}[ht]
+\begin{table}[H]
 \centering
 \caption{Structure of the Ratings DataFrame}
 \label{tab:df-overview}
@@ -36,7 +36,7 @@ Column        & Missing values & Duplicate rows \\
 
 \subsubsection*{Rating Distribution}
 
-\begin{table}[ht]
+\begin{table}[H]
     \centering
     \caption{Descriptive Statistics of the \texttt{rating} Column}
     \label{tab:rating-stats}
@@ -51,7 +51,7 @@ Column        & Missing values & Duplicate rows \\
 
 Figure~\ref{fig:hist-rating} shows the histogram of all ratings, confirming a mild skew towards higher scores.
 
-\begin{figure}[ht!]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{figures/hist.png}
   \caption{Histogram of Profile Ratings}
@@ -59,7 +59,7 @@ Figure~\ref{fig:hist-rating} shows the histogram of all ratings, confirming a mi
 \end{figure}
 
 \subsubsection*{User Activity}
-\begin{table}[ht]
+\begin{table}[H]
     \centering
     \caption{Number of Ratings Given per User}
     \label{tab:user-stats}
@@ -84,7 +84,7 @@ We computed the Pearson correlation between the total number of ratings a profil
 \]
 a very weak positive relationship. The corresponding scatter plot (Figure~\ref{fig:rating-vs-count}) shows no strong trend.
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{figures/output.png}
   \caption{Average Rating vs.\ Number of Ratings per Profile}
