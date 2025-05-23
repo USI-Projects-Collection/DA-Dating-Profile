@@ -13,7 +13,7 @@ conda env create -f environment.yml
 
 ### **Step 2: Activate the Conda Environment**
 ```sh
-conda activate DA_env
+conda activate da-rec
 ```
 
 ## 2. Using `pip` and `venv`
