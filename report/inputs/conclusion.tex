@@ -1,5 +1,5 @@
-EDA and preprocessing revealed key patterns and ensured clean input.
+Through exploratory analysis of 3.2\,M profile ratings we found a mildly right‑skewed 1--10 distribution, no significant outliers, and almost zero correlation between popularity and mean score. After memory‑efficient cleaning (74\,\% footprint reduction) and removal of 47 duplicate interactions we benchmarked three recommenders.
 
-While the naive item-mean model set a strong benchmark, collaborative filtering showed limited gains due to sparse user data. The content-based model, however, effectively utilized profile features like gender ratios and popularity, delivering the best performance.
+The simple item‑mean baseline already reached \textit{MAE}=1.46 on the held‑out set, outperforming a bias‑aware $k$‑NN collaborative filter. Adding lightweight content features (gender mix, popularity, residual bias) lowered the bias‑only baseline from 1.59 to 1.49 but still lagged behind the item‑mean.
 
-Our findings highlight the value of profile attributes in user preference modeling, and suggest future gains through enhanced features or hybrid models.
+These findings suggest that, given short user histories and limited metadata, identity‑level statistics explain most variance. Future work should explore latent‑factor or hybrid models enriched with temporal and demographic signals and evaluate ranking metrics better aligned with user experience.
