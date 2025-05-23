@@ -1,36 +1,38 @@
 \subsection*{Data Exploration}
 
-\subsubsection*{DataFrame Structure}
-\begin{table}[H]
-  \centering
-  \caption{Structure of the Ratings DataFrame}
-  \label{tab:df-overview}
-  \begin{tabular}{@{}ll@{}}
-    \toprule
-    Property      & Value                                             \\ 
-    \midrule
-    \# Rows       & 3{,}220{,}037                                     \\
-    \# Columns    & 3 (\texttt{userID}, \texttt{profileID}, \texttt{rating})    \\
-    Data types    & \texttt{int64}, \texttt{int64}, \texttt{int64}   \\
-    Memory usage  & 73.7\,MB                                          \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
 \subsubsection*{Missing Values and Duplicates}
 \begin{table}[H]
   \centering
-  \caption{Counts of Missing Values and Duplicate Rows}
-  \label{tab:missing-dup}
-  \begin{tabular}{@{}lrr@{}}
-    \toprule
-    Column         & Missing values & Duplicate rows \\ 
-    \midrule
-    \texttt{userID}    & 0              & 47                \\
-    \texttt{profileID} & 0              & 0                 \\
-    \texttt{rating}    & 0              & 0                 \\
-    \bottomrule
-  \end{tabular}
+  \begin{minipage}{0.48\textwidth}
+    \centering
+    \caption{Structure of the Ratings DataFrame}
+    \label{tab:df-overview}
+    \begin{tabular}{@{}ll@{}}
+      \toprule
+      Property      & Value                                             \\ 
+      \midrule
+      \# Rows       & 3{,}220{,}037                                     \\
+      \# Columns    & 3 (\texttt{userID}, \texttt{profileID}, \texttt{rating})    \\
+      Data types    & \texttt{int64}, \texttt{int64}, \texttt{int64}   \\
+      Memory usage  & 73.7\,MB                                          \\
+      \bottomrule
+    \end{tabular}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.48\textwidth}
+    \centering
+    \caption{Counts of Missing Values and Duplicate Rows}
+    \label{tab:missing-dup}
+    \begin{tabular}{@{}lrr@{}}
+      \toprule
+      Column         & Missing values & Duplicate rows \\ 
+      \midrule
+      \texttt{userID}    & 0              & 47                \\
+      \texttt{profileID} & 0              & 0                 \\
+      \texttt{rating}    & 0              & 0                 \\
+      \bottomrule
+    \end{tabular}
+  \end{minipage}
 \end{table}
 
 \noindent\textbf{Unique entities.} After dropping duplicates, there are 25\,245 unique users and 125\,428 unique profiles.
@@ -51,14 +53,14 @@
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[t]{0.48\textwidth}
+  \begin{subfigure}[t]{0.348\textwidth}
     \centering
     \includegraphics[width=\linewidth]{figures/hist.png}
     \caption{Histogram of Profile Ratings}
     \label{fig:hist-rating}
   \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\textwidth}
+  \hspace{1cm}
+  \begin{subfigure}[t]{0.34\textwidth}
     \centering
     \includegraphics[width=\linewidth]{figures/output.png}
     \caption{Average Rating vs.\ Number of Ratings per Profile}

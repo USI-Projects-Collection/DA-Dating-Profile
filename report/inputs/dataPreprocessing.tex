@@ -16,13 +16,19 @@ $\sim\!90$\,MB of memory.
 \subsection*{Dtype optimisation}
 
 \vspace{2pt}
-\begin{tabular}{@{}lcc@{}}
-\toprule
-\textbf{Column} & \textbf{Original dtype} & \textbf{Final dtype} \\ \midrule
-\textit{userID}, \textit{profileID} & \texttt{int64} & \texttt{int64}\textsuperscript{*} \\
-\textit{rating}                     & \texttt{int64} & \texttt{float32} \\
-\textit{gender}                     & \texttt{int64} & \texttt{category} \\ \bottomrule
-\end{tabular}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{@{}lcc@{}}
+        \toprule
+        \textbf{Column} & \textbf{Original dtype} & \textbf{Final dtype} \\ \midrule
+        \textit{userID}, \textit{profileID} & \texttt{int64} & \texttt{int64}\textsuperscript{*} \\
+        \textit{rating}                     & \texttt{int64} & \texttt{float32} \\
+        \textit{gender}                     & \texttt{int64} & \texttt{category} \\ \bottomrule
+  \end{tabular}
+  \caption{Dtype optimisation for the dataset columns.}
+  \label{tab:dtype-optimisation}
+\end{table}
 
 \smallskip
 \noindent\textsuperscript{*}\,Required by \texttt{torch.nn.Embedding}.
