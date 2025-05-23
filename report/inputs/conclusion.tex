@@ -1,5 +1,5 @@
-In this assignment, we evaluated three approaches to the dating profile recommendation problem using a large-scale user-rating dataset. Our exploratory analysis revealed valuable insights about user behavior and profile popularity, and preprocessing ensured the dataset was free from duplicates and efficiently structured.
+EDA and preprocessing revealed key patterns and ensured clean input.
 
-The naive models provided a strong baseline, particularly the item-mean predictor, which surprisingly performed on par with more complex techniques. The collaborative filtering model, though conceptually richer, offered no significant advantage, likely due to sparse user histories and the dominance of popular profiles. The content-based model, on the other hand, showed the most promise—successfully integrating profile-level metadata such as popularity and gender distribution to outperform the baseline.
+While the naive item-mean model set a strong benchmark, collaborative filtering showed limited gains due to sparse user data. The content-based model, however, effectively utilized profile features like gender ratios and popularity, delivering the best performance.
 
-These results indicate that profile features are meaningful signals of user preference, and further improvements could be achieved by incorporating more nuanced content features or hybridizing with collaborative approaches. This project not only demonstrates the application of core data analytics techniques but also underscores the challenges and opportunities in designing recommender systems with limited contextual information.
+Our findings highlight the value of profile attributes in user preference modeling, and suggest future gains through enhanced features or hybrid models.
